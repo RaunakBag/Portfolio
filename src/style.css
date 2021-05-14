@@ -1,24 +1,30 @@
-
 body{
     font-family: 'Poppins', sans-serif;
     margin:0;
+    padding: none;
     background-color:#333333;
 }
 section{
-    background-color: #333333;
+    width: 100%;
     color:aliceblue;
 }
 .hero{
-    background-color:#333333;
+    background: url(./images/Hero-Image.jpg);
+    width: 100%;
+    /* background-repeat: no-repeat;
+    background-position: cover; */
     height:100vh;
     color:aliceblue;
     font-size:  40px;
 }
+#about-me{
+    background-image: url(https://wallpapercave.com/wp/wp2581376.jpg);
+}
 footer {
-    background-color: #333333;
+    background-image: url(https://www.twintowns.com.au/wp-content/uploads/2017/11/footer-background.jpg);
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 10px 0px 10px 0;
 }
 nav{
     display: flex;
@@ -53,21 +59,24 @@ p{
 }
 .hero-area{
     display:flex;
+    flex-wrap: wrap;
+    width: 100%;
     height: 100%;
     justify-content:space-between;
     align-items:center;
 }
 .hero-text{
-    margin-left: 80px;
+    margin-left: 20px;
     margin-bottom: 200px;
 }
 .button{
     font-size:30px;
-    width: 160px;
-    height:50px;
+    width: 170px;
+    height:55px;
     border-radius:20px;
     background-color: rgba(80, 243, 255, 0.336);
     text-align: center;
+    align-items: center;
     padding-top: 8px;
     margin-top:20px;
 }
@@ -79,6 +88,7 @@ p{
     color: white
 }
 .socials{
+    /* margin-left: 10px; */
     padding-bottom: 200px;
 }
 .logo{
@@ -87,19 +97,22 @@ p{
     border-radius:150px;
 }
 .social{
-    margin:20px;
+    /* margin:20px; */
     color:green;
+    display:flex;
+    flex-direction: column;
 }
 .sub-section{
     display:flex;
     justify-content:space-around;
-    padding:80px;
+    padding:80px 0 80px 20px;
+    flex-wrap: wrap;
 }
 .sub-section-alt{
     display:flex;
     flex-direction: column;
     text-align: center; 
-    padding:80px;
+    padding:80px 0 80px 0;
 }
 h2{
     font-size:50px;
@@ -118,8 +131,12 @@ h2{
     margin: 10px;
 }
 .project-container {
+    width: 100%;
+    padding: 50px 0 80px 0;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .project-image{
@@ -128,7 +145,7 @@ h2{
     height:250px;
     border-radius: 30px;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 700px) {
     .project-container {
         display: flex;
         flex-wrap: wrap;
@@ -142,6 +159,20 @@ hr {
     text-decoration: none;
     color: #ef744b;
 }
+.hero-area{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items:center;
+}
+.social-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 a {
     text-decoration: none;
     color: white;
@@ -154,6 +185,17 @@ a {
 .hamburger:focus{
     outline: 0;
 }
+.contact-me{
+    justify-content: center;
+    text-align: center;
+}
+.email{
+    display:flex;
+    font-size:50px;
+    justify-content: center;
+    text-align: center;
+}
+
 @media only screen and (max-width: 500px) {
     .hamburger {
         display: block;
@@ -164,7 +206,9 @@ a {
         margin: 10px;
         align-self: flex-end;
     }
-
+    body{
+        align-items: center;
+    }
     ul {
         display: none;
         background-color: #333333;
@@ -180,6 +224,17 @@ a {
         flex-direction: column-reverse;
         background-color: #333333;
     }
+    h1{
+        font-size: 50px;
+    }
+    .hero-area{
+        display:flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items:center;
+    }
 
     .logo {
         display: none;
@@ -187,8 +242,10 @@ a {
     .contact-me{
         display:flex;
         justify-content: center;
+        text-align: center;
     }
-    .email{
-        display:flex; 
+    footer .email{
+        display:flex;
+        font-size:20px;
     }
 }
