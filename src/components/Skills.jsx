@@ -1,6 +1,9 @@
 // src/components/Skills.js
 // import React from 'react';
 import { FiCode, FiLayers, FiCloud, FiTool, FiDatabase, FiWifi } from 'react-icons/fi';
+import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaAngular, FaNodeJs, FaAws, FaMicrosoft, FaGoogle, FaDocker, FaDatabase } from 'react-icons/fa';
+import { SiKubernetes } from 'react-icons/si';
+import { SiTypescript, SiSpringboot, SiExpress, SiMongodb, SiApachekafka, SiGrafana } from 'react-icons/si';
 
 const Skills = () => {
     const skillCategories = [
@@ -42,6 +45,33 @@ const Skills = () => {
         }
     ];
 
+    // Map skill names to icons
+    const skillIcons = {
+        Java: <FaJava style={{ color: '#f89820' }} />, // orange
+        JavaScript: <FaJs style={{ color: '#f7df1e' }} />, // yellow
+        TypeScript: <SiTypescript style={{ color: '#3178c6' }} />, // blue
+        'HTML/CSS': <span style={{ display: 'inline-flex', gap: 2 }}><FaHtml5 style={{ color: '#e34c26' }} /><FaCss3Alt style={{ color: '#1572b6' }} /></span>,
+        'Spring Boot': <SiSpringboot style={{ color: '#6db33f' }} />, // green
+        React: <FaReact style={{ color: '#61dafb' }} />, // cyan
+        Angular: <FaAngular style={{ color: '#dd0031' }} />, // red
+        'Node.js': <FaNodeJs style={{ color: '#3c873a' }} />, // green
+        Express: <SiExpress style={{ color: '#000' }} />, // black
+        AWS: <FaAws style={{ color: '#ff9900' }} />, // orange
+        Azure: <FaMicrosoft style={{ color: '#0078d4' }} />, // blue
+        GCP: <FaGoogle style={{ color: '#4285f4' }} />, // blue
+        // OCI: <FaOracle style={{ color: '#f80000' }} />, // red
+        Docker: <FaDocker style={{ color: '#2496ed' }} />, // blue
+        Kubernetes: <SiKubernetes style={{ color: '#326ce5' }} />, // blue
+        AKS: <FaMicrosoft style={{ color: '#0078d4' }} />, // blue
+        // OCP: OpenShift icon not available in react-icons/si; fallback to FaDocker with red color
+        OCP: <FaDocker style={{ color: '#e00' }} />, // fallback red Docker icon
+        Grafana: <SiGrafana style={{ color: '#f46800' }} />, // orange
+        MongoDB: <SiMongodb style={{ color: '#47a248' }} />, // green
+        SQL: <FaDatabase style={{ color: '#00758f' }} />, // blue
+        'PL/SQL': <FaDatabase style={{ color: '#00758f' }} />, // blue
+        'Apache Kafka': <SiApachekafka style={{ color: '#231f20' }} />,
+    };
+
     return (
         <section id="skills" className="skills section">
             <div className="container">
@@ -68,7 +98,10 @@ const Skills = () => {
                             </div>
                             <div className="skill-chip-grid">
                                 {category.skills.map((skill, idx) => (
-                                    <span className="skill-pill" key={idx}>{skill}</span>
+                                    <span className="skill-pill" key={idx}>
+                                        <span style={{ marginRight: 6, verticalAlign: 'middle' }}>{skillIcons[skill]}</span>
+                                        {skill}
+                                    </span>
                                 ))}
                             </div>
                         </div>
