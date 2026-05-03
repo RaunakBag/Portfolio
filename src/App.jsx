@@ -1,34 +1,25 @@
 // src/App.js
-import React, { useState } from 'react';
-import './App.css';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Certifications from './components/Certification';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from 'react';
+import HeroSection from './sections/HeroSection';
+import MarqueeSection from './sections/MarqueeSection';
+import AboutSection from './sections/AboutSection';
+import ServicesSection from './sections/ServicesSection';
 
-function App() {
-  const [activeSection, setActiveSection] = useState('home');
 
+import Footer from './components/shared/Footer';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-      <main>
-        <Hero setActiveSection={setActiveSection} />
-        <About />
-        <Skills />
-        <Experience />
-        <Certifications />
-        <Education />
-        <Contact />
-      </main>
+    <div className="main-wrapper">
+      <HeroSection />
+      <MarqueeSection />
+      <AboutSection />
+      <ServicesSection />
+      <ProjectsSection />
+      <ContactSection />
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
