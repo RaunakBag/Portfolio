@@ -1,6 +1,7 @@
 // src/App.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+import { Scene3D } from './components/Scene3D';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,8 +17,9 @@ function App() {
 
   return (
     <div className="App">
+      <Scene3D />
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-      <main>
+      <main className="site-main">
         <Hero setActiveSection={setActiveSection} />
         <About />
         <Skills />

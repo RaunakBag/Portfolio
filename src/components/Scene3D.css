@@ -1,0 +1,167 @@
+.scene-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  perspective: 1600px;
+  perspective-origin: 50% 30%;
+}
+
+.scene-3d__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.scene-3d__mesh {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(124, 58, 237, 0.45), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(6, 182, 212, 0.35), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 75%, rgba(249, 115, 22, 0.12), transparent 45%),
+    radial-gradient(ellipse 60% 45% at 25% 85%, rgba(124, 58, 237, 0.18), transparent 50%);
+  animation: mesh-pulse 18s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-pulse {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    filter: saturate(1);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1%, 1%, 0);
+    filter: saturate(1.15);
+  }
+}
+
+.scene-3d__grid-wrap {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -5%;
+  height: 55%;
+  transform-style: preserve-3d;
+  transform: rotateX(78deg);
+  transform-origin: center bottom;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 40%, black 100%);
+}
+
+.scene-3d__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.12) 1px, transparent 1px);
+  background-size: 72px 72px;
+  animation: grid-scroll 25s linear infinite;
+}
+
+@keyframes grid-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-72px, 72px, 0);
+  }
+}
+
+.scene-3d__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  animation: float-orb 14s ease-in-out infinite;
+}
+
+.scene-3d__orb--a {
+  width: min(42vw, 480px);
+  height: min(42vw, 480px);
+  top: 8%;
+  left: 8%;
+  background: radial-gradient(circle at 30% 30%, rgba(167, 139, 250, 0.55), transparent 70%);
+  animation-delay: 0s;
+}
+
+.scene-3d__orb--b {
+  width: min(38vw, 420px);
+  height: min(38vw, 420px);
+  top: 45%;
+  right: 5%;
+  background: radial-gradient(circle at 70% 40%, rgba(34, 211, 238, 0.45), transparent 68%);
+  animation-delay: -4s;
+  animation-duration: 17s;
+}
+
+.scene-3d__orb--c {
+  width: min(32vw, 360px);
+  height: min(32vw, 360px);
+  bottom: 15%;
+  left: 35%;
+  background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.35), transparent 65%);
+  animation-delay: -7s;
+  animation-duration: 20s;
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(3%, -4%, 20px) scale(1.05);
+  }
+  66% {
+    transform: translate3d(-2%, 3%, -10px) scale(0.98);
+  }
+}
+
+.scene-3d__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%) rotateX(72deg);
+  pointer-events: none;
+}
+
+.scene-3d__ring--1 {
+  width: min(70vw, 720px);
+  height: min(70vw, 720px);
+  animation: ring-spin 28s linear infinite;
+  opacity: 0.4;
+}
+
+.scene-3d__ring--2 {
+  width: min(88vw, 920px);
+  height: min(88vw, 920px);
+  animation: ring-spin 38s linear infinite reverse;
+  opacity: 0.22;
+  border-color: rgba(124, 58, 237, 0.15);
+}
+
+@keyframes ring-spin {
+  from {
+    transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-3d__mesh,
+  .scene-3d__grid,
+  .scene-3d__orb,
+  .scene-3d__ring {
+    animation: none !important;
+  }
+
+  .scene-3d__mesh {
+    transform: none;
+    filter: none;
+  }
+}
