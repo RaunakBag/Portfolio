@@ -21,7 +21,7 @@ const Certifications = () => {
     {
       name: 'Claude Code Hackathon',
       issuer: 'Anthropic',
-      date: '2024',
+      date: '2026',
       credential: 'https://www.credly.com/badges/06e690f7-dddc-48d1-a592-1d5ff0fc2713/linked_in_profile',
     },
   ];
