@@ -119,6 +119,7 @@ const Certifications = () => {
       ],
     },
     {
+<<<<<<< HEAD
       title: 'Generative AI Builders',
       summary: 'Hands-on GenAI work that moves from hackathons to practical model-assisted delivery.',
       kicker: 'Anthropic',
@@ -231,6 +232,12 @@ const Certifications = () => {
           credential: 'https://drive.google.com/file/d/1KBOLTJW0zPTeaR9oumj79eu0jp1g9JFF/view?usp=sharing',
         },
       ],
+=======
+      name: 'Claude Code Hackathon',
+      issuer: 'Anthropic',
+      date: '2026',
+      credential: 'https://www.credly.com/badges/06e690f7-dddc-48d1-a592-1d5ff0fc2713/linked_in_profile',
+>>>>>>> d0ac7e0b952e0a967afeabc5df3fca32846590af
     },
   ];
 
