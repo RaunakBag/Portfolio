@@ -1689,8 +1689,13 @@ textarea {
     padding: 90px 0;
   }
 
+  .profile-image {
+    aspect-ratio: auto;
+  }
+
   .profile-image img {
-    height: 240px;
+    height: auto;
+    object-fit: contain;
   }
 
   .skills-grid {
