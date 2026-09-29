@@ -5,6 +5,21 @@ import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { MotionSection } from './MotionSection';
 
+const RECIPIENT_EMAIL = 'raunakbag97@gmail.com';
+
+const buildMailtoHref = ({ name, email, subject, message }) => {
+  const lines = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    '',
+    message,
+  ];
+
+  return `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    lines.join('\n')
+  )}`;
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -51,12 +66,26 @@ const Contact = () => {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        window.open(
+          buildMailtoHref(formData),
+          '_blank',
+          'noopener,noreferrer'
+        );
+        setResult({
+          success: true,
+          message: 'Email service is not configured yet. Your mail app was opened with the message prefilled.',
+        });
+        return;
+      }
+
       await emailjs.send(
         serviceId,
         templateId,
         {
           from_name: formData.name,
-          from_email: formData.email,
+          reply_to: formData.email,
           subject: formData.subject,
           message: formData.message,
         },
@@ -64,8 +93,14 @@ const Contact = () => {
       );
       setResult({ success: true, message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch {
-      setResult({ success: false, message: 'Failed to send message. Please try again later.' });
+    } catch (error) {
+      window.open(buildMailtoHref(formData), '_blank', 'noopener,noreferrer');
+      setResult({
+        success: true,
+        message: error?.text?.includes('service ID not found')
+          ? 'Automated sending is not configured yet, so your mail app was opened instead.'
+          : 'Email service failed, so your mail app was opened instead.',
+      });
     } finally {
       setLoading(false);
     }
@@ -143,7 +178,7 @@ const Contact = () => {
               </a>
             </div>
             <div className="contact-cta">
-              <a className="btn btn-primary btn-sm" href="mailto:raunakbag97@gmail.com">
+              <a className="btn btn-primary btn-sm" href={`mailto:${RECIPIENT_EMAIL}`}>
                 Send an Email
               </a>
               <a
