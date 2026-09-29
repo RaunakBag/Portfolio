@@ -9,7 +9,7 @@ export function MotionSection({ id, className, children }) {
       className={className}
       initial={{ opacity: 0, y: 44 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-48px', amount: 0.12 }}
+      viewport={{ once: true, margin: '-48px', amount: 0.02 }}
       transition={{ duration: 0.68, ease }}
     >
       {children}

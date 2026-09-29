@@ -1678,6 +1678,27 @@ textarea {
     align-items: flex-start;
     text-align: left;
   }
+
+  .cert-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-group {
+    padding: 20px;
+  }
+
+  .cert-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cert-group-meta {
+    justify-content: flex-start;
+  }
+
+  .cert-card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1687,6 +1708,36 @@ textarea {
 
   .section {
     padding: 90px 0;
+  }
+
+  .certification-shell {
+    gap: 18px;
+  }
+
+  .cert-group-heading {
+    gap: 12px;
+  }
+
+  .cert-group-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+  }
+
+  .cert-group-title {
+    font-size: 1.2rem;
+  }
+
+  .cert-group-summary {
+    font-size: 0.95rem;
+  }
+
+  .cert-card {
+    padding: 16px;
+  }
+
+  .cert-visual {
+    height: 96px;
   }
 
   .profile-image {

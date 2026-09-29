@@ -274,7 +274,7 @@ const Certifications = () => {
           <div className="cert-groups">
             {certificationGroups.map((group, groupIndex) => (
               <motion.section
-                key={group.title}
+                key={`${group.kicker}-${group.title}-${groupIndex}`}
                 className="cert-group"
                 style={{ '--group-accent': group.accent, '--group-accent-soft': group.accentSoft }}
                 initial={{ opacity: 0, y: 28 }}
