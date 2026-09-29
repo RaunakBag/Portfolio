@@ -67,7 +67,7 @@ const Hero = ({ setActiveSection }) => {
             {[
               { value: '4+', label: 'Years Experience' },
               { value: '15+', label: 'Projects Delivered' },
-              { value: '5+', label: 'Certifications' },
+              { value: '17', label: 'Credentials' },
             ].map((m) => (
               <motion.div
                 className="metric"
