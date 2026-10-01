@@ -17,7 +17,7 @@ export function MotionSection({ id, className, children }) {
       style={{ y: sectionY }}
       initial={{ opacity: 0, y: 30, scale: 0.985, filter: 'blur(8px)' }}
       whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-12% 0px -8% 0px', amount: 0.12 }}
+      viewport={{ once: true, margin: '0px 0px -8% 0px', amount: 0.01 }}
       transition={{ duration: 0.7, ease, delay: 0.04 }}
     >
       {children}
