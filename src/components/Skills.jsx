@@ -1,5 +1,4 @@
 // src/components/Skills.js
-import { motion } from 'framer-motion';
 import { FiCode, FiLayers, FiCloud, FiTool, FiDatabase, FiWifi } from 'react-icons/fi';
 import { FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaAngular, FaNodeJs, FaAws, FaMicrosoft, FaGoogle, FaDocker, FaDatabase } from 'react-icons/fa';
 import { SiKubernetes } from 'react-icons/si';
@@ -87,13 +86,10 @@ const Skills = () => {
         </div>
         <div className="skills-grid">
           {skillCategories.map((category, index) => (
-            <motion.div
+            <div
               className="skill-card"
               key={category.category}
-              initial={{ opacity: 0, y: 40, rotateX: 6 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ delay: index * 0.06, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              style={{ animationDelay: `${index * 0.06}s` }}
             >
               <div className="skill-card-top">
                 <div className="skill-card-badge">
@@ -114,7 +110,7 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 // src/components/Hero.js
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { FiArrowUpRight, FiDownload, FiMapPin } from 'react-icons/fi';
 import { TiltCard } from './TiltCard';
@@ -22,6 +22,23 @@ const item = {
 };
 
 const Hero = ({ setActiveSection }) => {
+  const { scrollYProgress } = useScroll();
+  const heroY = useSpring(useTransform(scrollYProgress, [0, 0.4], [0, 120]), {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.8,
+  });
+  const panelY = useSpring(useTransform(scrollYProgress, [0, 0.5], [0, -80]), {
+    stiffness: 110,
+    damping: 30,
+    mass: 0.9,
+  });
+  const glowY = useSpring(useTransform(scrollYProgress, [0, 0.6], [0, 90]), {
+    stiffness: 90,
+    damping: 30,
+    mass: 1,
+  });
+
   return (
     <motion.section
       id="home"
@@ -30,6 +47,10 @@ const Hero = ({ setActiveSection }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75 }}
     >
+      <motion.div className="hero-parallax-layer hero-glow" style={{ y: glowY }} />
+      <motion.div className="hero-parallax-layer hero-orb hero-orb--one" style={{ y: heroY }} />
+      <motion.div className="hero-parallax-layer hero-orb hero-orb--two" style={{ y: heroY }} />
+
       <div className="container hero-grid">
         <motion.div className="hero-text" variants={container} initial="hidden" animate="show">
           <motion.p className="eyebrow" variants={item}>
@@ -85,6 +106,7 @@ const Hero = ({ setActiveSection }) => {
           initial={{ opacity: 0, scale: 0.95, x: 24 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.75, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          style={{ y: panelY }}
         >
           <TiltCard className="hero-tilt" intensity={9}>
             <div className="profile-card">

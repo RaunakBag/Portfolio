@@ -1,16 +1,6 @@
 // src/components/About.js
-import { motion } from 'framer-motion';
 import { FiCpu, FiCloud, FiShield } from 'react-icons/fi';
 import { MotionSection } from './MotionSection';
-
-const cardMotion = {
-  rest: { opacity: 0, y: 24 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.08 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
 
 const About = () => {
   return (
@@ -40,19 +30,11 @@ const About = () => {
                 { value: '4+', label: 'Years Experience' },
                 { value: '15+', label: 'Projects Completed' },
                 { value: '5+', label: 'Certifications' },
-              ].map((h, i) => (
-                <motion.div
-                  className="highlight-card"
-                  key={h.label}
-                  custom={i}
-                  initial="rest"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.5 }}
-                  variants={cardMotion}
-                >
+              ].map((h) => (
+                <div className="highlight-card" key={h.label}>
                   <div className="highlight-value">{h.value}</div>
                   <div className="highlight-label">{h.label}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -61,23 +43,14 @@ const About = () => {
               { icon: <FiCpu />, title: 'Performance First', text: 'Designing low-latency services and optimizing critical paths in distributed systems.' },
               { icon: <FiCloud />, title: 'Cloud Native', text: 'Shipping reliable microservices on AWS, Azure, and OCI with production-ready practices.' },
               { icon: <FiShield />, title: 'Secure by Design', text: 'Building observability, compliance, and resilience into every stage of delivery.' },
-            ].map((f, i) => (
-              <motion.div
-                className="feature-card"
-                key={f.title}
-                custom={i + 3}
-                initial="rest"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.4 }}
-                variants={cardMotion}
-                whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              >
+            ].map((f) => (
+              <div className="feature-card" key={f.title}>
                 <div className="feature-icon">{f.icon}</div>
                 <div>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

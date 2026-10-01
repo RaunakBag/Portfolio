@@ -1,7 +1,6 @@
 // src/components/Contact.js
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiLinkedin, FiGithub } from 'react-icons/fi';
 import { MotionSection } from './MotionSection';
 
@@ -117,13 +116,7 @@ const Contact = () => {
           </p>
         </div>
         <div className="contact-grid">
-          <motion.div
-            className="contact-card contact-card--highlight"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <div className="contact-card contact-card--highlight">
             <div className="contact-card-header">
               <h3>Let’s connect</h3>
               <span className="contact-pill">Available</span>
@@ -190,15 +183,8 @@ const Contact = () => {
                 Connect on LinkedIn
               </a>
             </div>
-          </motion.div>
-          <motion.form
-            className="contact-form contact-form--glass"
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
+          </div>
+          <form className="contact-form contact-form--glass" onSubmit={handleSubmit}>
             {result && (
               <div className={`form-result ${result.success ? 'success' : 'error'}`}>{result.message}</div>
             )}
@@ -249,7 +235,7 @@ const Contact = () => {
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? 'Sending...' : 'Send Message'}
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </MotionSection>

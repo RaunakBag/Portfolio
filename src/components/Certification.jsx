@@ -100,6 +100,20 @@ const Certifications = () => {
           credential:
             'https://learn.microsoft.com/api/credentials/share/en-us/BagRaunakCognizant-8512/8F0B1A106B6F8E74?sharingId=703DE7458678E167',
         },
+        {
+          name: 'Microsoft Certified: Agentic AI Business Solutions Architect Expert',
+          issuer: 'Microsoft',
+          date: '2026',
+          credential:
+            'https://learn.microsoft.com/api/credentials/share/en-us/BagRaunakCognizant-8512/2E94AE004289A7F0?sharingId=703DE7458678E167',
+        },
+        {
+          name: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate',
+          issuer: 'Microsoft',
+          date: '2026',
+          credential:
+            'https://learn.microsoft.com/api/credentials/share/en-us/BagRaunakCognizant-8512/9E0110BA7918125A?sharingId=703DE7458678E167',
+        },
       ],
     },
     {
@@ -303,18 +317,14 @@ const Certifications = () => {
                 </div>
 
                 <div className="cert-card-grid">
-                  {group.certifications.map((cert, certIndex) => {
+                  {group.certifications.map((cert) => {
                     const previewUrl = getCredentialPreviewUrl(cert.credential, cert.name, cert.issuer, group.accent);
 
                     return (
-                      <motion.article
+                      <div
                         className="cert-card"
                         key={cert.name}
                         style={{ '--group-accent': group.accent, '--group-accent-soft': group.accentSoft }}
-                        initial={{ opacity: 0, y: 24, scale: 0.98 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        viewport={{ once: true, margin: '-32px' }}
-                        transition={{ delay: certIndex * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <div className="cert-card-top">
                           <span className="cert-badge">
@@ -370,7 +380,7 @@ const Certifications = () => {
                             <span className="cert-chip">Not available</span>
                           )}
                         </div>
-                      </motion.article>
+                      </div>
                     );
                   })}
                 </div>

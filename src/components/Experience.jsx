@@ -1,6 +1,7 @@
 // src/components/Experience.js
 import { motion } from 'framer-motion';
 import { MotionSection } from './MotionSection';
+import { ParallaxCard } from './ParallaxCard';
 
 const Experience = () => {
   const experiences = [
@@ -74,9 +75,11 @@ const Experience = () => {
         </div>
         <div className="timeline">
           {experiences.map((exp, index) => (
-            <motion.div
+            <ParallaxCard
               className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
               key={`${exp.company}-${exp.period}`}
+              intensity={28}
+              direction={index % 2 === 0 ? 1 : -1}
               initial={{ opacity: 0, x: index % 2 === 0 ? -48 : 48 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -99,7 +102,7 @@ const Experience = () => {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </ParallaxCard>
           ))}
         </div>
       </div>

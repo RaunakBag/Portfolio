@@ -1,5 +1,4 @@
 // src/components/Education.js
-import { motion } from 'framer-motion';
 import { MotionSection } from './MotionSection';
 
 const Education = () => {
@@ -33,15 +32,8 @@ const Education = () => {
           </p>
         </div>
         <div className="education-track">
-          {items.map((edu, index) => (
-            <motion.div
-              className="education-card"
-              key={edu.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            >
+          {items.map((edu) => (
+            <div className="education-card" key={edu.title}>
               <div className="education-card-top">
                 <span className="education-badge">{edu.badge}</span>
                 <span className="education-type">{edu.type}</span>
@@ -52,7 +44,7 @@ const Education = () => {
                 <span className="education-period">{edu.period}</span>
                 <span className="education-chip">{edu.chip}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,11 +1,19 @@
 // src/components/Footer.js
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { FiLinkedin, FiGithub, FiMail } from 'react-icons/fi';
 
 const Footer = () => {
+  const { scrollYProgress } = useScroll();
+  const footerY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 30]), {
+    stiffness: 110,
+    damping: 28,
+    mass: 0.8,
+  });
+
   return (
     <motion.footer
       className="footer footer-unique"
+      style={{ y: footerY }}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
