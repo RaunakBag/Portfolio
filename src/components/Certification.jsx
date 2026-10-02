@@ -186,6 +186,24 @@ const Certifications = () => {
           date: '2026',
           credential: 'https://www.credly.com/badges/31b97605-6d5d-4922-b7c4-12c6d31097b1/public_url',
         },
+        {
+          name: 'Govern Agent Access with Gemini Enterprise Agent Platform',
+          issuer: 'Google Cloud',
+          date: '2026',
+          credential: 'https://www.credly.com/badges/d9e013bf-b668-40d1-b11e-5cd5036a7d41/public_url',
+        },
+        {
+          name: 'Deploy Gemini Enterprise with Workspace Data Sources and Model Armor',
+          issuer: 'Google Cloud',
+          date: '2026',
+          credential: 'https://www.credly.com/badges/34851e5c-d1eb-413e-8098-ea2994028fd2/public_url',
+        },
+        {
+          name: 'Add Agents to Gemini Enterprise',
+          issuer: 'Google Cloud',
+          date: '2026',
+          credential: 'https://www.credly.com/badges/5cc3708e-e9cf-4fa2-9424-860233051e6a/public_url',
+        },
       ],
     },
     {
